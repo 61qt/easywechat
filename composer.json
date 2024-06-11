@@ -1,6 +1,6 @@
 {
-  "name": "overtrue/wechat",
-  "description": "微信SDK",
+  "name": "61qt/wechat",
+  "description": "青藤微信SDK",
   "keywords": [
     "easywechat",
     "wechat",
@@ -13,10 +13,14 @@
     {
       "name": "overtrue",
       "email": "anzhengchao@gmail.com"
+    },
+    {
+      "name": "rayson",
+      "email": "xurhwork@gmail.com"
     }
   ],
   "require": {
-    "php": ">=7.4",
+    "php": ">=8.0",
     "ext-fileinfo": "*",
     "ext-openssl": "*",
     "ext-simplexml": "*",
@@ -28,8 +32,7 @@
     "psr/simple-cache": "^1.0||^2.0||^3.0",
     "symfony/cache": "^3.3 || ^4.3 || ^5.0 || ^6.0",
     "symfony/event-dispatcher": "^4.3 || ^5.0 || ^6.0",
-    "symfony/http-foundation": "^2.7 || ^3.0 || ^4.0 || ^5.0 || ^6.0",
-    "symfony/psr-http-message-bridge": "^0.3 || ^1.0 || ^2.0",
+    "symfony/http-foundation": "^2.7 || ^3.0 || ^4.0 || ^5.0 || ^6.0 || ^7.0",
     "ext-libxml": "*"
   },
   "require-dev": {
