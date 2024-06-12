@@ -26,11 +26,11 @@ class HasHttpRequestsTest extends TestCase
             'curl' => [
                 CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4,
             ],
-        ], HasHttpRequests::getDefaultOptions());
+        ], HasHttpRequestTest::getDefaultOptions());
 
-        HasHttpRequests::setDefaultOptions(['foo' => 'bar']);
+        HasHttpRequestTest::setDefaultOptions(['foo' => 'bar']);
 
-        $this->assertSame(['foo' => 'bar'], HasHttpRequests::getDefaultOptions());
+        $this->assertSame(['foo' => 'bar'], HasHttpRequestTest::getDefaultOptions());
     }
 
     public function testHttpClient()
@@ -165,4 +165,9 @@ class DummnyClassForHasHttpRequestTest
     use HasHttpRequests;
 
     protected $baseUri = 'http://easywechat.com';
+}
+
+class HasHttpRequestTest
+{
+    use HasHttpRequests;
 }

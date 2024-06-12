@@ -24,6 +24,7 @@ use Monolog\Handler\SyslogHandler;
 use Monolog\Handler\WhatFailureGroupHandler;
 use Monolog\Logger as Monolog;
 use Psr\Log\LoggerInterface;
+use Stringable;
 
 /**
  * Class LogManager.
@@ -456,7 +457,7 @@ class LogManager implements LoggerInterface
      *
      * @throws \Exception
      */
-    public function emergency($message, array $context = []): void
+    public function emergency(string|Stringable $message, array $context = [])
     {
         $this->driver()->emergency($message, $context);
     }
@@ -474,7 +475,7 @@ class LogManager implements LoggerInterface
      *
      * @throws \Exception
      */
-    public function alert($message, array $context = []): void
+    public function alert(string|Stringable $message, array $context = [])
     {
         $this->driver()->alert($message, $context);
     }
@@ -489,7 +490,7 @@ class LogManager implements LoggerInterface
      *
      * @throws \Exception
      */
-    public function critical($message, array $context = []): void
+    public function critical(string|Stringable $message, array $context = [])
     {
         $this->driver()->critical($message, $context);
     }
@@ -503,7 +504,7 @@ class LogManager implements LoggerInterface
      *
      * @throws \Exception
      */
-    public function error($message, array $context = []): void
+    public function error(string|Stringable $message, array $context = [])
     {
         $this->driver()->error($message, $context);
     }
@@ -519,7 +520,7 @@ class LogManager implements LoggerInterface
      *
      * @throws \Exception
      */
-    public function warning($message, array $context = []): void
+    public function warning(string|Stringable $message, array $context = [])
     {
         $this->driver()->warning($message, $context);
     }
@@ -532,7 +533,7 @@ class LogManager implements LoggerInterface
      *
      * @throws \Exception
      */
-    public function notice($message, array $context = []): void
+    public function notice(string|Stringable $message, array $context = [])
     {
         $this->driver()->notice($message, $context);
     }
@@ -547,7 +548,7 @@ class LogManager implements LoggerInterface
      *
      * @throws \Exception
      */
-    public function info($message, array $context = []): void
+    public function info(string|Stringable $message, array $context = [])
     {
         $this->driver()->info($message, $context);
     }
@@ -560,7 +561,7 @@ class LogManager implements LoggerInterface
      *
      * @throws \Exception
      */
-    public function debug($message, array $context = []): void
+    public function debug(string|Stringable $message, array $context = [])
     {
         $this->driver()->debug($message, $context);
     }
@@ -574,7 +575,7 @@ class LogManager implements LoggerInterface
      *
      * @throws \Exception
      */
-    public function log($level, $message, array $context = []): void
+    public function log($level, string|Stringable $message, array $context = [])
     {
         $this->driver()->log($level, $message, $context);
     }

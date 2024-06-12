@@ -15,6 +15,8 @@ use EasyWeChat\Kernel\Exceptions\RuntimeException;
 use EasyWeChat\Kernel\Support\ArrayAccessible;
 use EasyWeChat\Kernel\Support\Collection;
 use EasyWeChat\Tests\TestCase;
+use Traversable;
+
 use function EasyWeChat\Kernel\data_get;
 use function EasyWeChat\Kernel\data_to_array;
 
@@ -97,7 +99,7 @@ class DummyIteratorAggregateClassForHelpersTest implements \IteratorAggregate
         $this->array = $array;
     }
 
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new \ArrayIterator($this->array);
     }
@@ -112,22 +114,22 @@ class DummyArrayAccessClassForHelpersTest implements \ArrayAccess
         $this->array = $array;
     }
 
-    public function offsetExists($offset)
+    public function offsetExists(mixed $offset): bool
     {
         return isset($this->array[$offset]);
     }
 
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return $this->array[$offset] ?? null;
     }
 
-    public function offsetSet($offset, $value)
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         $this->array[$offset] = $value;
     }
 
-    public function offsetUnset($offset)
+    public function offsetUnset(mixed $offset): void
     {
         unset($this->array[$offset]);
     }

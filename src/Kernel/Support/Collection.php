@@ -18,6 +18,7 @@ use EasyWeChat\Kernel\Contracts\Arrayable;
 use IteratorAggregate;
 use JsonSerializable;
 use Serializable;
+use Traversable;
 
 /**
  * Class Collection.
@@ -263,7 +264,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
      *                        <b>Traversable</b>
      */
     #[\ReturnTypeWillChange]
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->items);
     }
@@ -280,7 +281,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
      *             The return value is cast to an integer
      */
     #[\ReturnTypeWillChange]
-    public function count()
+    public function count(): int
     {
         return count($this->items);
     }
@@ -378,7 +379,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
      *              The return value will be casted to boolean if non-boolean was returned
      */
     #[\ReturnTypeWillChange]
-    public function offsetExists($offset)
+    public function offsetExists(mixed $offset): bool
     {
         return $this->has($offset);
     }
@@ -394,7 +395,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
      *                      </p>
      */
     #[\ReturnTypeWillChange]
-    public function offsetUnset($offset)
+    public function offsetUnset(mixed $offset): void
     {
         if ($this->offsetExists($offset)) {
             $this->forget($offset);
@@ -414,7 +415,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
      * @return mixed Can return all value types
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return $this->offsetExists($offset) ? $this->get($offset) : null;
     }
@@ -433,7 +434,7 @@ class Collection implements ArrayAccess, Countable, IteratorAggregate, JsonSeria
      *                      </p>
      */
     #[\ReturnTypeWillChange]
-    public function offsetSet($offset, $value)
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         $this->set($offset, $value);
     }

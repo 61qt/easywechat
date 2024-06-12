@@ -15,6 +15,7 @@ use ArrayAccess;
 use ArrayIterator;
 use EasyWeChat\Kernel\Contracts\Arrayable;
 use IteratorAggregate;
+use Traversable;
 
 /**
  * Class ArrayAccessible.
@@ -30,17 +31,17 @@ class ArrayAccessible implements ArrayAccess, IteratorAggregate, Arrayable
         $this->array = $array;
     }
 
-    public function offsetExists($offset)
+    public function offsetExists(mixed $offset): bool
     {
         return array_key_exists($offset, $this->array);
     }
 
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return $this->array[$offset];
     }
 
-    public function offsetSet($offset, $value)
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         if (null === $offset) {
             $this->array[] = $value;
@@ -49,12 +50,12 @@ class ArrayAccessible implements ArrayAccess, IteratorAggregate, Arrayable
         }
     }
 
-    public function offsetUnset($offset)
+    public function offsetUnset(mixed $offset): void
     {
         unset($this->array[$offset]);
     }
 
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return new ArrayIterator($this->array);
     }
